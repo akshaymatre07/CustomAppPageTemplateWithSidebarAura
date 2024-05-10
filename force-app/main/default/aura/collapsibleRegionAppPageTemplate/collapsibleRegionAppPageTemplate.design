@@ -1,0 +1,12 @@
+<design:component label="Two Region Custom App Page Template With Side Bar">
+    <!-- Define a custom app page template -->
+    <flexipage:template >
+        <!-- Define left region -->
+        <flexipage:region name="left" label="Left Region" defaultWidth="SMALL" />
+        <!-- Define right region -->
+        <flexipage:region name="right" label="Right Region" defaultWidth="MEDIUM">
+            <!-- Specify form factor for right region -->
+            <flexipage:formfactor type="MEDIUM" width="SMALL" />
+        </flexipage:region>
+    </flexipage:template>
+</design:component>

@@ -1,0 +1,33 @@
+<aura:component implements="lightning:appHomeTemplate" description="Main column and right sidebar. On a phone, the regions are of equal width">
+    <!-- Define attributes for left and right content and sidebar collapse state -->
+    <aura:attribute name="left" type="Aura.Component[]" />
+    <aura:attribute name="right" type="Aura.Component[]" />
+    <aura:attribute name="isSidebarCollapsed" type="Boolean" access="PRIVATE" default="true" />
+
+    <!-- Main component structure -->
+    <div>
+        <lightning:layout>
+            <!-- If sidebar is collapsed, display left content -->
+            <aura:if isTrue="{!v.isSidebarCollapsed}">
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '2' : '6' }"
+                                  class="slds-m-left_small">
+                    {!v.left}
+                </lightning:layoutItem>
+            </aura:if>
+            
+            <!-- Button to toggle sidebar collapse/expand -->
+            <lightning:layoutItem flexibility="no-flex">
+                <lightning:buttonIcon class="button" onclick="{!c.toggleSection}"
+                                      variant="border-filled"
+                                      iconName="{! v.isSidebarCollapsed ? 'utility:left' : 'utility:right' }" 
+                                      alternativeText="{! v.isSidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar' }" />
+            </lightning:layoutItem>
+            
+            <!-- Right sidebar content -->
+            <lightning:layoutItem flexibility="grow"
+                                  class="slds-m-right_small">
+                {!v.right}
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>
